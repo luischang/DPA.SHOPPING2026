@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <ProjectReference Include="..\DPA.SHOPPING.CORE\DPA.SHOPPING.CORE.csproj" />
   </ItemGroup>
 
 </Project>
