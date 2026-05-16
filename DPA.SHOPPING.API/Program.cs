@@ -1,4 +1,5 @@
 using DPA.SHOPPING.CORE.Core.Interfaces;
+using DPA.SHOPPING.CORE.Core.Services;
 using DPA.SHOPPING.CORE.Infrastructure.Data;
 using DPA.SHOPPING.CORE.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -12,6 +13,7 @@ builder.Services.AddDbContext<StoreDbContext>(options =>
     options.UseSqlServer(cnx));
 
 builder.Services.AddTransient<ICategoryRepository, CategoryRepository>();
+builder.Services.AddTransient<ICategoryService, CategoryService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
