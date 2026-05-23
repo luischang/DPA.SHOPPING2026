@@ -10,16 +10,18 @@ namespace DPA.SHOPPING.CORE.Core.Services
     public class UserService : IUserService
     {
         private readonly IUserRepository _userRepository;
+        private readonly IJWTService _jwtService;
 
-        public UserService(IUserRepository userRepository)
+        public UserService(IUserRepository userRepository, IJWTService jwtService)
         {
             _userRepository = userRepository;
+            _jwtService = jwtService;
         }
 
         public async Task<UserListDTO?> SignIn(UserSignInDTO userSignInDTO)
         {
             var user = await _userRepository.SignIn(userSignInDTO.Email, userSignInDTO.Password);
-            var token = "";
+            var token = _jwtService.GenerateJWToken(user);
             if (user == null) return null;
 
             return new UserListDTO

@@ -1,11 +1,13 @@
 using DPA.SHOPPING.CORE.Core.DTOs;
 using DPA.SHOPPING.CORE.Core.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DPA.SHOPPING.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class ProductController : ControllerBase
     {
         private readonly IProductService _productService;
