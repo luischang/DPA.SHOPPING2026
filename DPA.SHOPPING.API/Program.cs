@@ -10,8 +10,12 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 var _config = builder.Configuration;
 var cnx = _config.GetConnectionString("DevConnection");
+// For SQL Server
+//builder.Services.AddDbContext<StoreDbContext>(options =>
+    //options.UseSqlServer(cnx));
+// For PostgreSQL
 builder.Services.AddDbContext<StoreDbContext>(options =>
-    options.UseSqlServer(cnx));
+    options.UseNpgsql(cnx));
 
 builder.Services.AddTransient<ICategoryRepository, CategoryRepository>();
 builder.Services.AddTransient<ICategoryService, CategoryService>();
